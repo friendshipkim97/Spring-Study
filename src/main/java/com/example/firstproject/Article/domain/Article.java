@@ -1,10 +1,15 @@
-package com.example.firstproject.entity;
+package com.example.firstproject.Article.domain;
+
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Setter
+@ToString
 @Entity // DB가 해당 객체를 인식 가능!
 public class Article {
 
@@ -24,12 +29,4 @@ public class Article {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "Article{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
 }
