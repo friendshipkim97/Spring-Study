@@ -1,5 +1,6 @@
 package com.example.firstproject.Article.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Setter
 @ToString
 @Entity // DB가 해당 객체를 인식 가능!
+@AllArgsConstructor
 public class Article {
 
     @Id // 대표값을 지정! like a 주민등록번호
@@ -22,11 +24,5 @@ public class Article {
 
     @Column
     private String content;
-
-    public Article(Long id, String title, String content) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-    }
 
 }
