@@ -15,18 +15,35 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig { // 구성 영역, Ioc 컨테이너 or DI 컨테이너
 
+    // @Bean memberService -> new MemoryMemberRepository()
+    // @Bean orderService -> new MemoryMemberRepository()
+
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+    // call AppConfig.memberRepository
+
+    // 3번 호출이 아니라 memberRepository 메서드가 한번만 호출됨
+    // call AppConfig.memberService
+    // call AppConfig.memberRepository
+    // call AppConfig.orderService
+
     @Bean
     public MemberService memberService(){ // 생성자 주입
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
     public MemberRepository memberRepository() { // 이 메서드를 통해 new MemoryMemberRepository() 부분을 중복 제거
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){ // 생성자 주입
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
