@@ -34,4 +34,11 @@ public class OrderServiceTest {
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 
+//    @Test
+//    void fieldInjectionTest(){ // 스프링에서 돌리는게 아니라서 NullPointerException
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+//        orderService.createOrder(1L, "itemA", 10000);
+//
+//    }
+
 }

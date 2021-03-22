@@ -12,7 +12,7 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@Configuration // @Configuration이 없으면 스프링 컨테이너에서 빈들이 관리가 안됨, 싱글톤을 유지할 수 없음
 public class AppConfig { // 구성 영역, Ioc 컨테이너 or DI 컨테이너
 
     // @Bean memberService -> new MemoryMemberRepository()
