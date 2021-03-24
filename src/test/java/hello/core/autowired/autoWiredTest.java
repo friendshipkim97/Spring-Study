@@ -1,6 +1,9 @@
 package hello.core.autowired;
 
+import hello.core.AutoAppConfig;
 import hello.core.member.Member;
+import hello.core.member.MemberService;
+import hello.core.member.MemberServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -9,11 +12,17 @@ import org.springframework.lang.Nullable;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class autoWiredTest {
 
     @Test
     void AutowiredOption(){
+
+//        ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
+
         ApplicationContext ac = new AnnotationConfigApplicationContext(TestBean.class);
+
     }
 
     static class TestBean{
