@@ -24,27 +24,13 @@ public class OrderServiceImpl implements OrderService{
      private final MemberRepository memberRepository; // DIP지킴, final이라 값이 무조건 있어야 함
      private final DiscountPolicy discountPolicy;  // 이렇게 하면 인터페이스에만 의존, DIP는 지켰으나 NullPointerException 오류가 뜬다.
 
-
-//    @Autowired // 수정자 주입
-//    public void setMemberRepository(MemberRepository memberRepository) {
-//        this.memberRepository = memberRepository;
-//    }
-//    @Autowired
-//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
-//        this.discountPolicy = discountPolicy;
-//    }
-
     @Autowired // @Autowired는 생성자가 하나면 생략할 수 있다.
     public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
 
-//    @Autowired // 일반 메서드 주입
-//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
