@@ -1,5 +1,7 @@
 package spring.Tutorial1.member;
 
+import org.springframework.context.annotation.Bean;
+
 public class MemberServiceImpl implements MemberService{
 
     // MemberServiceImpl이 MemberRepository도 의존하고 MemoryMemberRepository도 의존한다.
@@ -21,5 +23,11 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
+    }
+
+    // 테스트 용도
+    @Bean
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

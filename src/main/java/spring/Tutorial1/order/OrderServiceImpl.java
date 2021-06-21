@@ -1,5 +1,6 @@
 package spring.Tutorial1.order;
 
+import org.springframework.context.annotation.Bean;
 import spring.Tutorial1.discount.DiscountPolicy;
 import spring.Tutorial1.discount.FixDiscountPolicy;
 import spring.Tutorial1.discount.RateDiscountPolicy;
@@ -24,5 +25,11 @@ public class OrderServiceImpl implements OrderService{
         Member member = memberRepository.findById(memberId);
         int discountPrice = discountPolicy.discount(member, itemPrice); // 단일체계원칙 OCP를 잘 지키고 설계한 것이다. 여기서 할인과 관련된 로직이 들어가지 않으므로
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    // 테스트 용도
+    @Bean
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }
