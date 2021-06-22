@@ -1,6 +1,8 @@
 package spring.Tutorial1.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import spring.Tutorial1.discount.DiscountPolicy;
 import spring.Tutorial1.discount.FixDiscountPolicy;
 import spring.Tutorial1.discount.RateDiscountPolicy;
@@ -8,6 +10,7 @@ import spring.Tutorial1.member.Member;
 import spring.Tutorial1.member.MemberRepository;
 import spring.Tutorial1.member.MemoryMemberRepository;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository; // final이 선언되어 있으면 무조건 할당이 되어야함, 생성자를 통해서도 괜찮다.
@@ -15,6 +18,7 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 인터페이스에도 의존하고, 구체화에도의존한다.
     private final DiscountPolicy discountPolicy; // 인터페이스에만 의존하게 된다.
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
@@ -28,8 +32,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     // 테스트 용도
-    @Bean
-    public MemberRepository getMemberRepository() {
-        return memberRepository;
-    }
+//    @Bean
+//    public MemberRepository getMemberRepository() {
+//        return memberRepository;
+//    }
 }
