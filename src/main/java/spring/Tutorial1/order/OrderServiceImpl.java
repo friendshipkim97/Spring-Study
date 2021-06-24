@@ -1,14 +1,12 @@
 package spring.Tutorial1.order;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import spring.Tutorial1.annotation.MainDiscountPolicy;
 import spring.Tutorial1.discount.DiscountPolicy;
-import spring.Tutorial1.discount.FixDiscountPolicy;
-import spring.Tutorial1.discount.RateDiscountPolicy;
 import spring.Tutorial1.member.Member;
 import spring.Tutorial1.member.MemberRepository;
-import spring.Tutorial1.member.MemoryMemberRepository;
 
 @Component
 public class OrderServiceImpl implements OrderService{
@@ -19,7 +17,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy; // 인터페이스에만 의존하게 된다.
 
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
