@@ -50,10 +50,9 @@ public class BasicController {
     }
 
     @GetMapping("/basic-objects")
-    public String basicObjects(HttpSession session){
+    public String basicObjects(HttpSession session) {
         session.setAttribute("sessionData", "Hello Session");
         return "basic/basic-objects";
-
     }
 
     @Component("helloBean")
