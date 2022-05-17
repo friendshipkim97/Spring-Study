@@ -1,0 +1,9 @@
+{{>layouts/header}}
+
+<form action="/articles/create" method="post">  <!-- 어디로보낼지 action , 어떻게보낼지 method -->
+    <input type="text" name="title">
+    <textarea name="content"></textarea>
+    <button type="submit">제출</button>
+</form>
+
+{{>layouts/footer}}
